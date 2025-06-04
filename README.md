@@ -14,6 +14,8 @@ Welcome to **MyNotes** 📓, your solution for effortless day-to-day task manage
 
 🗑️ **Delete Notes:** Completed a task? Simply delete the note associated with it.
 
+🏷️ **Priority Tags:** Assign a priority level (Low, Medium, High or Urgent) to each note and filter the list by these tags.
+
 📱 **Responsive Design:** Whether you're on your desktop, tablet, or smartphone, MyNotes provides a smooth and consistent user experience.
 
 🌈 **Modern Styling:** Enjoy a visually appealing design with carefully chosen colors, fonts, and layout.

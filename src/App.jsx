@@ -7,11 +7,13 @@ import CreateNote from "./pages/CreateNote";
 import EditNote from "./pages/EditNote";
 
 import { useState, useEffect } from "react";
+import { DEFAULT_TAG } from "./tags";
 
 function App() {
-  const [notes, setNotes] = useState(
-    JSON.parse(localStorage.getItem("notes")) || []
-  );
+  const [notes, setNotes] = useState(() => {
+    const saved = JSON.parse(localStorage.getItem("notes")) || [];
+    return saved.map((n) => ({ ...n, tag: n.tag || DEFAULT_TAG }));
+  });
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);

@@ -5,12 +5,14 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import useCreateDate from "../components/useCreateDate";
+import { TAGS, DEFAULT_TAG } from "../tags";
 
 const EditNote = ({ notes, setNotes }) => {
   const { id } = useParams();
   const note = notes.find((item) => item.id == id);
   const [title, setTitle] = useState(note.title);
   const [details, setDetails] = useState(note.details);
+  const [tag, setTag] = useState(note.tag || DEFAULT_TAG);
   const date = useCreateDate();
   const navigate = useNavigate();
 
@@ -18,7 +20,7 @@ const EditNote = ({ notes, setNotes }) => {
     e.preventDefault();
 
     if (title && details) {
-      const newNote = { ...note, title, details, date };
+      const newNote = { ...note, title, details, date, tag };
 
       const newNotes = notes.map((item) => {
         if (item.id == id) {
@@ -69,6 +71,17 @@ const EditNote = ({ notes, setNotes }) => {
         onSubmit={handleForm}
         className="create_note_form w-full gap-3 flex mt-3 flex-col items-center justify-center"
       >
+        <select
+          value={tag}
+          onChange={(e) => setTag(e.target.value)}
+          className="w-full p-2 text-white bg-[#ffffff03] border-[1px] border-[#ffffff1a] border-solid outline-none"
+        >
+          {TAGS.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
         <input
           type="text"
           // placeholder="Title"
