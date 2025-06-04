@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { v4 as uuid } from "uuid";
 import useCreateDate from "../components/useCreateDate";
+import { TAGS, DEFAULT_TAG } from "../tags";
 
 const CreateNote = ({ setNotes }) => {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
+  const [tag, setTag] = useState(DEFAULT_TAG);
   const date = useCreateDate();
   const navigate = useNavigate();
 
@@ -21,6 +23,7 @@ const CreateNote = ({ setNotes }) => {
         title,
         details,
         date,
+        tag,
       };
       setNotes((prevNotes) => [note, ...prevNotes]);
       navigate("/");
@@ -47,6 +50,17 @@ const CreateNote = ({ setNotes }) => {
         onSubmit={handleSubmit}
         className="create_note_form w-full gap-3 flex mt-3 flex-col items-center justify-center "
       >
+        <select
+          value={tag}
+          onChange={(e) => setTag(e.target.value)}
+          className="w-full p-2 text-white bg-[#ffffff03] border-[1px] border-[#ffffff1a] border-solid outline-none"
+        >
+          {TAGS.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
         <input
           type="text"
           placeholder="Title"
