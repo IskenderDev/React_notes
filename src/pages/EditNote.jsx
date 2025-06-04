@@ -74,17 +74,35 @@ const EditNote = ({ notes, setNotes }) => {
         <select
           value={tag}
           onChange={(e) => setTag(e.target.value)}
-          className="w-full p-2 text-white bg-[#ffffff03] border-[1px] border-[#ffffff1a] border-solid outline-none"
+          className="w-full p-2 outline-none appearance-none"
+          style={{
+            WebkitAppearance: "none",
+            MozAppearance: "none",
+            appearance: "none", // убираем стандартную стрелку
+            backgroundColor: "#ffffff03",
+            color: "#ffcc00",
+            border: "1px solid #444444",
+            borderRadius: "4px", // можно убрать или изменить
+            paddingRight: "2rem", // чтобы было место под кастомную стрелку
+          }}
         >
           {TAGS.map((t) => (
-            <option key={t} value={t}>
+            <option
+              key={t}
+              value={t}
+              style={{
+                backgroundColor: "#333",
+                color: "#ffcc00",
+              }}
+            >
               {t}
             </option>
           ))}
         </select>
+
         <input
           type="text"
-          // placeholder="Title"
+          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           autoFocus

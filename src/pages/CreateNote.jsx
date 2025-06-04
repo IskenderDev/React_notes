@@ -53,14 +53,28 @@ const CreateNote = ({ setNotes }) => {
         <select
           value={tag}
           onChange={(e) => setTag(e.target.value)}
-          className="w-full p-2 text-white bg-[#ffffff03] border-[1px] border-[#ffffff1a] border-solid outline-none"
+          className="w-full p-2 border border-[#ffffff1a] outline-none appearance-none"
+          style={{
+            backgroundColor: "#ffffff03", // нужный фон
+            color: "#ffcc00", // цвет текста
+            borderColor: "#444444", // цвет рамки
+          }}
         >
           {TAGS.map((t) => (
-            <option key={t} value={t}>
+            <option
+              key={t}
+              value={t}
+              style={{
+                backgroundColor: "#333", // фон для раскрывающихся options
+                color: "#ffcc00", // текст
+              }}
+              className="border-none"
+            >
               {t}
             </option>
           ))}
         </select>
+
         <input
           type="text"
           placeholder="Title"
